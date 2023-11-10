@@ -10,7 +10,7 @@ const game = {
         }
         newEntity.rollStats();
         console.log(`Created ${name}.`);
-        
+        generateTable();
     },
 }
 
@@ -62,13 +62,13 @@ function generateTable(){
 
 document.getElementById("playerButton").addEventListener("click", function() {game.createEntity(document.getElementById("playerName").value, true)});
 
-game.createEntity('Rayne', true);
+// game.createEntity('Rayne', true);
 
-game.createEntity('Wynn', true);
+// game.createEntity('Wynn', true);
 
-game.createEntity('Platinum', true);
+// game.createEntity('Platinum', true);
 
-game.createEntity('Jon', true);
+// game.createEntity('Jon', true);
 
-generateTable();
+
 
