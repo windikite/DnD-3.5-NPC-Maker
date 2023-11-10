@@ -10,6 +10,9 @@ const game = {
         }
         newEntity.rollStats();
         console.log(`Created ${name}.`);
+        if(document.getElementById("playerTable")) {
+            document.getElementById("playerTable").remove();
+        };
         generateTable();
     },
 }
@@ -58,6 +61,7 @@ function generateTable(){
     document.body.appendChild(tbl);
     // sets the border attribute of tbl to '2'
     tbl.setAttribute("border", "2");
+    tbl.id = "playerTable";
 }
 
 document.getElementById("playerButton").addEventListener("click", function() {game.createEntity(document.getElementById("playerName").value, true)});
