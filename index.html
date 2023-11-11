@@ -13,19 +13,69 @@
     </header>
 
     <div class="container">
-        <label for="playerName">Player Name:</label>
-        <input type="text" name="" id="playerName">
-        <button id="playerButton">Create and roll stats</button>
         <main>
 
             <ul data-tabs>
-                <li><a data-tabby-default href="#ancestries">Ancestries</a></li>
+                <li><a data-tabby-default href="#stats">Stats</a></li>
+                <li><a href="#class">Class</a></li>
+                <li><a href="#backgrounds">Backgrounds</a></li>
                 <li><a href="#equipment">Equipment</a></li>
                 <li><a href="#feats">Feats</a></li>
             </ul>
 
-            <div id="ancestries" class="tabbed-content">
-               <p>ancestries, classes and stats</p>
+            <div id="stats" class="tabbed-content">
+                <label for="charName">Character Name:</label>
+                <input type="text" name="" id="charName">
+                <label for="charName">Check box if player:</label>
+                <input type="checkbox" name="isPlayerBox" id="isPlayerBox">
+
+
+            </div>
+
+            <div id="class" class="tabbed-content">
+                <label for="classes">Choose Class:</label> 
+                <!-- class select -->
+                <select name="cars" id="classes">
+                    <option value="">Barbarian</option>
+                    <option value="">Cleric</option>
+                    <option value="">Fighter</option>
+                    <option value="">Ranger</option>
+                    <option value="">Rogue</option>
+                    <option value="">Sorcerer</option>
+                    <option value="">Wizard</option>
+                    <option value="">Warlock</option>
+                    </select>   
+            </div>
+
+            <div id="backgrounds" class="tabbed-content"> 
+                <!-- biology select -->
+                <label for="biology">Choose Biological Template:</label>
+                <select name="biology" id="biology">
+                    <option value="">Human</option>
+                    <option value="">Elf</option>
+                    <option value="">Orc</option>
+                    <option value="">Gnome</option>
+                    <option value="">Dragonkin</option>
+                    <option value="">Warforged</option>
+                </select>   
+                <!-- cultural heritage select -->
+                <br><label for="templates">Choose Templates:</label>
+                <select name="templates" id="templates">
+                    <optgroup label="Official">
+                        <option value="">Spellwarped</option>
+                        <option value="">Fairy(sprite)</option>
+                        <option value="">Undead</option>
+                        <option value="">Vampire</option>
+                        <option value="">Werewolf</option>
+                    </optgroup>
+                    <optgroup label="Homebrew">
+                        <option value="">Felhornkin</option>
+                        <option value="">Fyrcynn</option>
+                        <option value="">Lithari</option>
+                        <option value="">Luxicore</option>
+                        <option value="">Uisce</option>
+                    </optgroup>
+                </select>   
             </div>
 
             <div id="equipment" class="tabbed-content">
@@ -34,7 +84,9 @@
 
             <div id="feats" class="tabbed-content">
                 <p>feats and skill point distribution</p>  
-             </div>
+            </div>
+
+            <br><button id="charButton">Create and roll stats</button>
 
         </main>
     </div>

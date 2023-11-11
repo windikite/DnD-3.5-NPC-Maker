@@ -10,8 +10,8 @@ const game = {
         }
         newEntity.rollStats();
         console.log(`Created ${name}.`);
-        if(document.getElementById("playerTable")) {
-            document.getElementById("playerTable").remove();
+        if(document.getElementById("charTable")) {
+            document.getElementById("charTable").remove();
         };
         generateTable();
     },
@@ -58,10 +58,10 @@ function generateTable(){
     tbl.appendChild(tblBody);
     document.body.appendChild(tbl);
     tbl.setAttribute("border", "2");
-    tbl.id = "playerTable";
+    tbl.id = "charTable";
 }
 
-document.getElementById("playerButton").addEventListener("click", function() {game.createEntity(document.getElementById("playerName").value, true)});
+document.getElementById("charButton").addEventListener("click", function() {game.createEntity(document.getElementById("charName").value, true)});
 
 // game.createEntity('Rayne', true);
 

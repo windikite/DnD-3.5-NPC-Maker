@@ -1,19 +1,45 @@
+:root{
+--main-color: #786c68;
+--sub-color: #69b395;
+--accent-color: #75e7eb;
+}
+*{
+    background-color: #fff;
+    
+}
+
 #playerTable{
     text-align: center;
     padding:5px;
 }
+body{
+    background-color: var(--main-color);
+    /* width:1000px; */
+    border: dashed rgb(255, 255, 255) 3px;
+    padding:10px;
+    margin: 10px;
+}
 .container{
-    background-color: rgb(158, 112, 67)255, 128, 0;
-    width:1000px;
+    /* background-color: var(--sub-color); */
+    /* width:950px; */
     border: dashed red 3px;
     padding:10px;
-}
-body{
-    background-color: rgb(158, 112, 67)255, 128, 0;
-    width:1000px;
-    border: dashed rgb(134, 110, 110) 3px;
+    margin:10px;
+    height:500px;
 }
 .tabbed-content{
-    background-color: aqua;
+    /* background-color: var(--accent-color); */
     border: dashed rgb(134, 110, 110) 3px;
+    padding: 10px;
+    height:400px;
+}
+header{
+    border: dashed red 3px;
+    padding:10px;
+    margin:10px;
+}
+footer{
+    border: dashed red 3px;
+    padding:10px;
+    margin:10px;
 }
