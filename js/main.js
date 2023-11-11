@@ -43,23 +43,20 @@ function generateTable(){
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
     Object.keys(game.players).forEach(playerKey => {
-         // create a table row for each player
          const row = document.createElement("tr");
-         //create cells based on player stats array length
- 
-         Object.values(game.players[0].stats).forEach(key => {
-             const cell = document.createElement("td");
-             const cellText = document.createTextNode(key);
-             cell.appendChild(cellText);
-             row.appendChild(cell);
+         const cell = document.createElement("td");
+         const playerNameCell = document.createElement("td");
+         cell.appendChild(playerNameCell);
+         row.appendChild(document.createTextNode(game.players[playerKey].name));
+         Object.values(game.players[playerKey].stats).forEach(key => {
+            const cell = document.createElement("td");
+            cell.appendChild(document.createTextNode(key));
+            row.appendChild(cell); 
          });
          tblBody.appendChild(row);
     });
-    // put the <tbody> in the <table>
     tbl.appendChild(tblBody);
-    // appends <table> into <body>
     document.body.appendChild(tbl);
-    // sets the border attribute of tbl to '2'
     tbl.setAttribute("border", "2");
     tbl.id = "playerTable";
 }

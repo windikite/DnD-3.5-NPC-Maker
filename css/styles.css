@@ -1,0 +1,19 @@
+#playerTable{
+    text-align: center;
+    padding:5px;
+}
+.container{
+    background-color: rgb(158, 112, 67)255, 128, 0;
+    width:1000px;
+    border: dashed red 3px;
+    padding:10px;
+}
+body{
+    background-color: rgb(158, 112, 67)255, 128, 0;
+    width:1000px;
+    border: dashed rgb(134, 110, 110) 3px;
+}
+.tabbed-content{
+    background-color: aqua;
+    border: dashed rgb(134, 110, 110) 3px;
+}

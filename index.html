@@ -4,22 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NPC Maker</title>
+    <link href="css/tabby-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <label for="playerName">Player Name:</label>
-    <input type="text" name="" id="playerName">
-    <button id="playerButton">Create and roll stats</button>
+    <header>
+        <p>header placeholder text</p>
+    </header>
 
-    <p>
-        - removed default character generation<br>
-        - moved table generation to createEntity function<br>
-        - current issues:<br>
-        - rolls not updated correctly for subsequent players<br>
-        - subsequent table generation does not remove previous table<br>
-    </p>
-    
+    <div class="container">
+        <label for="playerName">Player Name:</label>
+        <input type="text" name="" id="playerName">
+        <button id="playerButton">Create and roll stats</button>
+        <main>
+
+            <ul data-tabs>
+                <li><a data-tabby-default href="#ancestries">Ancestries</a></li>
+                <li><a href="#equipment">Equipment</a></li>
+                <li><a href="#feats">Feats</a></li>
+            </ul>
+
+            <div id="ancestries" class="tabbed-content">
+               <p>ancestries, classes and stats</p>
+            </div>
+
+            <div id="equipment" class="tabbed-content">
+               <p>armor, weapons and other equipment</p>    
+            </div>
+
+            <div id="feats" class="tabbed-content">
+                <p>feats and skill point distribution</p>  
+             </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>footer placeholder text</p>
+    </footer>
 
     <script src="./js/main.js"></script> 
+    <script src="./js/tabby.min.js"></script>
+    <script>
+        const tabby = new Tabby('[data-tabs]');
+    </script>
 
 </body>
 </html>
