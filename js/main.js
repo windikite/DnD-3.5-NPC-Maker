@@ -15,6 +15,12 @@ const game = {
         };
         generateTable();
     },
+    saveEntity: function(character){
+        const charTemplate = character.template.templateNames;
+        const charTemplateMod = character.template.templateMod;
+        console.log(`This character has these templates:\n${charTemplate}.\nIt has a total LA adjustment of ${charTemplateMod}.`)
+    }
+
 }
 
 class entity{
@@ -29,6 +35,11 @@ class entity{
             int: 0,
             cha: 0,
         };
+        this.level = 1;
+        this.template = {
+            templateNames: {},
+            templateMod: 0,
+        };
     }
     rollStats() {
         Object.keys(this.stats).forEach(stat => {
@@ -37,6 +48,7 @@ class entity{
         });
         console.log(this.stats)
     }
+
 }
 
 function generateTable(){

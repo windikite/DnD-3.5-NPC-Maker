@@ -16,86 +16,172 @@
         <main>
 
             <ul data-tabs>
-                <li><a data-tabby-default href="#stats">Stats</a></li>
-                <li><a href="#class">Class</a></li>
-                <li><a href="#backgrounds">Backgrounds</a></li>
-                <li><a href="#equipment">Equipment</a></li>
-                <li><a href="#feats">Feats</a></li>
+                <li><a data-tabby-default href="#step1">Start</a></li>
+                <li><a href="#step2">Step 2</a></li>
+                <li><a href="#step3">Step 3</a></li>
+                <li><a href="#step4">Step 4</a></li>
+                <li><a href="#step5">Step 5</a></li>
             </ul>
 
-            <div id="stats" class="tabbed-content">
+            <div id="step1" class="tabbed-content"> 
+                <!-- biology select -->
+                <label for="biology">Biological Template:</label>
+                <select name="biology" id="biology">
+                    <option value="None">None</option>
+                    <option value="Human">Human</option>
+                    <option value="Elf">Elf</option>
+                    <option value="Orc">Orc</option>
+                    <option value="Gnome">Gnome</option>
+                    <option value="Dragonkin">Dragonkin</option>
+                    <option value="Warforged">Warforged</option>
+                </select>
+                <!-- cultural heritage select -->
+                <br><label for="templates">Level Adjustment Templates:</label>
+                <select name="templates" id="templates">
+                    <option value="">None</option>
+                    <optgroup label="Official">
+                        <optgroup label="+0">
+                            <option value="">---</option>
+                        </optgroup>
+                        <optgroup label="+1">
+                            <option value="Spellwarped">Spellwarped</option>
+                            <option value="Fairy">Fairy(sprite)</option>
+                            <option value="Undead">Undead</option>
+                            <option value="Vampire">Vampire</option>
+                            <option value="Werewolf">Werewolf</option>
+                        </optgroup>
+                        <optgroup label="+2">
+                            <option value="">---</option>
+                        </optgroup>
+
+                    </optgroup>
+                    <optgroup label="+1">
+                        <option value="">+1</option>
+                    </optgroup>
+                    <optgroup label="Homebrew">
+                        <option value="Fellhornkin">Felhornkin +1</option>
+                        <option value="Fyrcynn">Fyrcynn +1</option>
+                        <option value="Lithari">Lithari +1</option>
+                        <option value="Luxicore">Luxicore +1</option>
+                        <option value="Uisce">Uisce +1</option>
+                    </optgroup>
+                </select>   
+                <!-- backgrounds select -->
+                <br><label for="backgrounds">Background:</label>
+                <select name="backgrounds" id="backgrounds">
+                    <option value="">None</option>
+                    <optgroup label="Official">
+                        <option value="Artisan">Artisan</option>
+                        <option value="Ascetic">Ascetic</option>
+                        <option value="Drifter">Drifter</option>
+                        <option value="Farm Hand">Farm Hand</option>
+                        <option value="Gladiator">Gladiator</option>
+                        <option value="Guttersnipe">Guttersnipe</option>
+                        <option value="Mariner">Mariner</option>
+                        <option value="Noble Scion">Noble Scion</option>
+                        <option value="Soldier">Soldier</option>
+                        <option value="Tribal">Tribal</option>
+                    </optgroup>
+                    <optgroup label="Homebrew">
+                        <option value="">---</option>
+                    </optgroup>
+                </select> 
+                <!-- Personality Archetypes -->
+                <br><label for="personalities">Personality Archetype:</label>
+                <select name="personalities" id="personalities">
+                    <option value="">None</option>
+                    <optgroup label="Official">
+                        <option value="Agent">Agent</option>
+                        <option value="Challenger">Challenger</option>
+                        <option value="Companion">Companion</option>
+                        <option value="Crusader">Crusader</option>
+                        <option value="Daredevil">Daredevil</option>
+                        <option value="Explorer">Explorer</option>
+                        <option value="Innocent">Innocent</option>
+                        <option value="Leader">Leader</option>
+                        <option value="Martyr">Martyr</option>
+                        <option value="Mercenary">Mercenary</option>
+                        <option value="Orphan">Orphan</option>
+                        <option value="Prophet">Prophet</option>
+                        <option value="Rebel">Rebel</option>
+                        <option value="Renegade">Renegade</option>
+                        <option value="Royalty">Royalty</option>
+                        <option value="Sage">Sage</option>
+                        <option value="Savage">Savage</option>
+                        <option value="Seeker">Seeker</option>
+                        <option value="Simple Soul">Simple Soul</option>
+                        <option value="Strategist">Strategist</option>
+                        <option value="Theorist">Theorist</option>
+                        <option value="Trickster">Trickster</option>
+                        <option value="Wanderer">Wanderer</option>
+                    </optgroup>
+                    <optgroup label="Homebrew">
+                        <option value="">---</option>
+                    </optgroup>
+                </select> 
+                <!-- cultural heritage select -->
+                <br><label for="cultures">Culture:</label>
+                <select name="cultures" id="cultures">
+                    <option value="">None</option>
+                    <optgroup label="Official">
+                        <option value="">---</option>
+                    </optgroup>
+                    <optgroup label="Homebrew">
+                        <option value="Cara Sì">Cara Sì</option>
+                        <option value="Dredge">Dredge</option>
+                        <option value="Dredge">Hallowfolk</option>
+                        <option value="Kuningrihi">Kuningrihi</option>
+                        <option value="Muinntir a' Chuartan">Muinntir a' Chuartan</option>
+                        <option value="Skálifolk">Skálifolk</option>
+                        <option value="Zēleschûr">Zēleschûr</option>
+                    </optgroup>
+                </select> 
+            </div>
+
+            <div id="step2" class="tabbed-content">
+                <label for="classes">Class:</label> 
+                <!-- class select -->
+                <select name="classes" id="classes">
+                    <option value="None">None</option>
+                    <option value="Barbarian">Barbarian</option>
+                    <option value="Cleric">Cleric</option>
+                    <option value="Fighter">Fighter</option>
+                    <option value="Ranger">Ranger</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Sorcerer">Sorcerer</option>
+                    <option value="Wizard">Wizard</option>
+                    <option value="Warlock">Warlock</option>
+                    </select>   
+            </div>
+
+            <div id="step3" class="tabbed-content">
                 <label for="charName">Character Name:</label>
                 <input type="text" name="" id="charName">
                 <label for="charName">Check box if player:</label>
                 <input type="checkbox" name="isPlayerBox" id="isPlayerBox">
 
-
             </div>
 
-            <div id="class" class="tabbed-content">
-                <label for="classes">Choose Class:</label> 
-                <!-- class select -->
-                <select name="cars" id="classes">
-                    <option value="">Barbarian</option>
-                    <option value="">Cleric</option>
-                    <option value="">Fighter</option>
-                    <option value="">Ranger</option>
-                    <option value="">Rogue</option>
-                    <option value="">Sorcerer</option>
-                    <option value="">Wizard</option>
-                    <option value="">Warlock</option>
-                    </select>   
-            </div>
 
-            <div id="backgrounds" class="tabbed-content"> 
-                <!-- biology select -->
-                <label for="biology">Choose Biological Template:</label>
-                <select name="biology" id="biology">
-                    <option value="">Human</option>
-                    <option value="">Elf</option>
-                    <option value="">Orc</option>
-                    <option value="">Gnome</option>
-                    <option value="">Dragonkin</option>
-                    <option value="">Warforged</option>
-                </select>   
-                <!-- cultural heritage select -->
-                <br><label for="templates">Choose Templates:</label>
-                <select name="templates" id="templates">
-                    <optgroup label="Official">
-                        <option value="">Spellwarped</option>
-                        <option value="">Fairy(sprite)</option>
-                        <option value="">Undead</option>
-                        <option value="">Vampire</option>
-                        <option value="">Werewolf</option>
-                    </optgroup>
-                    <optgroup label="Homebrew">
-                        <option value="">Felhornkin</option>
-                        <option value="">Fyrcynn</option>
-                        <option value="">Lithari</option>
-                        <option value="">Luxicore</option>
-                        <option value="">Uisce</option>
-                    </optgroup>
-                </select>   
-            </div>
 
-            <div id="equipment" class="tabbed-content">
+            <div id="step4" class="tabbed-content">
                <p>armor, weapons and other equipment</p>    
             </div>
 
-            <div id="feats" class="tabbed-content">
+            <div id="step5" class="tabbed-content">
                 <p>feats and skill point distribution</p>  
             </div>
 
-            <br><button id="charButton">Create and roll stats</button>
+            <br><button id="saveChar">Save character</button>
 
         </main>
     </div>
 
     <footer>
-        <p>footer placeholder text</p>
+        <p id="finalString">Choose options to build your character!</p>
     </footer>
 
-    <script src="./js/main.js"></script> 
+    <script src="./js/main2.js"></script> 
     <script src="./js/tabby.min.js"></script>
     <script>
         const tabby = new Tabby('[data-tabs]');
