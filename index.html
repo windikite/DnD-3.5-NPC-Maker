@@ -24,6 +24,18 @@
             </ul>
 
             <div id="step1" class="tabbed-content"> 
+
+                <!-- Char Name -->
+                <label for="charName">Character Name:</label>
+                <input type="text" name="" id="charName">
+                <label for="charName">Check box if player:</label>
+                <input type="checkbox" name="isPlayerBox" id="isPlayerBox"><br>
+
+
+
+
+
+
                 <!-- biology select -->
                 <label for="biology">Biological Template:</label>
                 <select name="biology" id="biology">
@@ -55,15 +67,15 @@
                         </optgroup>
 
                     </optgroup>
-                    <optgroup label="+1">
-                        <option value="">+1</option>
-                    </optgroup>
                     <optgroup label="Homebrew">
-                        <option value="Fellhornkin">Felhornkin +1</option>
-                        <option value="Fyrcynn">Fyrcynn +1</option>
-                        <option value="Lithari">Lithari +1</option>
-                        <option value="Luxicore">Luxicore +1</option>
-                        <option value="Uisce">Uisce +1</option>
+                        <optgroup label="+1">
+                            <option value="Fellhornkin">Felhornkin</option>
+                            <option value="Fyrcynn">Fyrcynn</option>
+                            <option value="Lithari">Lithari</option>
+                            <option value="Luxicore">Luxicore</option>
+                            <option value="Uisce">Uisce</option>
+                        </optgroup>
+
                     </optgroup>
                 </select>   
                 <!-- backgrounds select -->
@@ -136,11 +148,8 @@
                         <option value="Zēleschûr">Zēleschûr</option>
                     </optgroup>
                 </select> 
-            </div>
-
-            <div id="step2" class="tabbed-content">
-                <label for="classes">Class:</label> 
                 <!-- class select -->
+                <label for="classes">Class:</label> 
                 <select name="classes" id="classes">
                     <option value="None">None</option>
                     <option value="Barbarian">Barbarian</option>
@@ -151,14 +160,29 @@
                     <option value="Sorcerer">Sorcerer</option>
                     <option value="Wizard">Wizard</option>
                     <option value="Warlock">Warlock</option>
-                    </select>   
+                </select>   
+                <!-- class select -->
+                <label for="classes">Class:</label> 
+                <select name="classes" id="classes">
+                    <option value="None">None</option>
+                    <option value="Barbarian">Barbarian</option>
+                    <option value="Cleric">Cleric</option>
+                    <option value="Fighter">Fighter</option>
+                    <option value="Ranger">Ranger</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Sorcerer">Sorcerer</option>
+                    <option value="Wizard">Wizard</option>
+                    <option value="Warlock">Warlock</option>
+                </select> 
+                <button id="add-class">+</button>
+            </div>
+
+            <div id="step2" class="tabbed-content">
+  
             </div>
 
             <div id="step3" class="tabbed-content">
-                <label for="charName">Character Name:</label>
-                <input type="text" name="" id="charName">
-                <label for="charName">Check box if player:</label>
-                <input type="checkbox" name="isPlayerBox" id="isPlayerBox">
+                
 
             </div>
 
@@ -181,8 +205,10 @@
         <p id="finalString">Choose options to build your character!</p>
     </footer>
 
-    <script src="./js/main2.js"></script> 
+    <script src="./js/main.js"></script> 
     <script src="./js/tabby.min.js"></script>
+    <!-- <script src="./js/functions.js"></script>  -->
+    <script src="./js/classes.js"></script> 
     <script>
         const tabby = new Tabby('[data-tabs]');
     </script>

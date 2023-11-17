@@ -1,13 +1,12 @@
 :root{
---main-color: #786c68;
---sub-color: #69b395;
---accent-color: #75e7eb;
+--main-color: #3c3836;
+--sub-color: #786c68;
+--accent-color: #69b395;
 }
 *{
-    background-color: #fff;
+    /* background-color: #292929; */
     
 }
-
 #playerTable{
     text-align: center;
     padding:5px;
@@ -15,31 +14,35 @@
 body{
     background-color: var(--main-color);
     /* width:1000px; */
-    border: dashed rgb(255, 255, 255) 3px;
+    /* border: dashed rgb(255, 255, 255) 3px; */
     padding:10px;
     margin: 10px;
+    max-width: 1000px;
+    margin:auto;
 }
 .container{
-    /* background-color: var(--sub-color); */
+    background-color: var(--sub-color);
     /* width:950px; */
-    border: dashed red 3px;
+    /* border: dashed red 3px; */
     padding:10px;
     margin:10px;
     height:500px;
 }
 .tabbed-content{
-    /* background-color: var(--accent-color); */
-    border: dashed rgb(134, 110, 110) 3px;
+    background-color: var(--sub-color);
+    /* border: dashed rgb(134, 110, 110) 3px; */
     padding: 10px;
     height:400px;
 }
 header{
-    border: dashed red 3px;
+    background-color: var(--sub-color);
+    /* border: dashed red 3px; */
     padding:10px;
     margin:10px;
 }
 footer{
-    border: dashed red 3px;
+    background-color: var(--sub-color);
+    /* border: dashed red 3px; */
     padding:10px;
     margin:10px;
 }

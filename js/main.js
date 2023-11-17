@@ -1,32 +1,40 @@
-const game = {
-    players: [],
-    npcs: [],
-    createEntity:  function(name, isPlayer){
-        let newEntity = new entity(name, isPlayer);
-        if (isPlayer === true) {
-            this.players.push(newEntity);
-        }else if (isPlayer === false) {
-            this.npcs.push(newEntity);
-        }
-        newEntity.rollStats();
-        console.log(`Created ${name}.`);
-        if(document.getElementById("charTable")) {
-            document.getElementById("charTable").remove();
+const calc = {
+    saveSlot: 0,
+    creatures: [],
+    save: function(name) {
+        if (calc.creatures.some(e => e.charName == name)){
+            this.overwrite(name);
+        } else {
+            this.saveAsNew();
         };
-        generateTable();
     },
-    saveEntity: function(character){
-        const charTemplate = character.template.templateNames;
-        const charTemplateMod = character.template.templateMod;
-        console.log(`This character has these templates:\n${charTemplate}.\nIt has a total LA adjustment of ${charTemplateMod}.`)
+    load: function(name){
+        this.saveSlot = calc.creatures.findIndex(e => e.charName == name);
+        //eventually load information and set to page
+    },
+    overwrite: function(name) {
+        this.load(name);
+        const saveSlot = calc.saveSlot;
+        calc.creatures[saveSlot].build();
+        console.log(`Overwrote existing character named ${name} in character slot ${saveSlot} with new data.`);
+        console.log(calc.creatures[saveSlot]);
+    },
+    saveAsNew: function () {
+        let newCreature = new creature();
+        newCreature.build();
+        newCreature.rollStats();
+        this.creatures.push(newCreature);
+        console.log(`Saved ${newCreature.charName} as new character.`)
     }
-
 }
 
-class entity{
-    constructor(name, isPlayer){
-        this.name = name;
-        this.isPlayer = isPlayer;
+class creature{
+    constructor(){
+        this.charName = '';
+        this.classes = [];
+        this.baseLevel = 0;
+        this.classLevel = 0;
+        this.effectiveLevel = this.baseLevel + this.classLevel;
         this.stats = {
             con: 0,
             str: 0,
@@ -35,11 +43,18 @@ class entity{
             int: 0,
             cha: 0,
         };
-        this.level = 1;
-        this.template = {
-            templateNames: {},
-            templateMod: 0,
-        };
+        this.bioTemplate = '';
+        this.laTemplates = [];
+        this.laTemplateMod = 0;
+        this.personality = '';
+        this.culture = '';
+    };
+    rollStats() {
+        Object.keys(this.stats).forEach(stat => {
+          const rolls = new Array(4).fill(null).map(x => Math.floor(Math.random() * 6 + 1));
+          this.stats[stat] = rolls.reduce((sum, value) => sum + value, 0) - Math.min(...rolls);
+        });
+        console.log(this.stats)
     }
     rollStats() {
         Object.keys(this.stats).forEach(stat => {
@@ -48,40 +63,34 @@ class entity{
         });
         console.log(this.stats)
     }
-
+    addLevel(className) {
+        this.classes.push(className);
+        this.classLevel += classList.find(e => e.className === element).levelMod;
+    }
+    build() {
+        this.charName = document.getElementById('charName').value;
+        this.classes = document.getElementById('classes').value;
+        this.bioTemplate = document.getElementById('biology').value;
+        this.laTemplates = document.getElementById('templates').value;
+        this.laTemplateMod = 1;
+        this.personality = document.getElementById('personalities').value;
+        this.culture = document.getElementById('cultures').value;
+        console.log(`
+        Name: ${this.charName}\n
+        Level: ${this.effectiveLevel}\n
+        Classes: ${this.classes}\n
+        Stats: ${this.stats}\n
+        Race: ${this.bioTemplate}\n
+        Templates: ${this.laTemplates} with a LA mod of ${this.laTemplateMod}\n
+        Personality: ${this.personality}\n
+        Culture: ${this.culture}\n
+        `);
+        document.getElementById("finalString").innerText = `Saved ${this.personality} ${this.charName} the level ${this.effectiveLevel} ${this.laTemplates} ${this.bioTemplate} ${this.classes} of the ${this.culture}!`
+        console.log(`Saved ${this.personality} ${this.charName} the level ${this.effectiveLevel} ${this.laTemplates} ${this.bioTemplate} ${this.classes} of the ${this.culture}!`)
+    }
 }
 
-function generateTable(){
-    const tbl = document.createElement("table");
-    const tblBody = document.createElement("tbody");
-    Object.keys(game.players).forEach(playerKey => {
-         const row = document.createElement("tr");
-         const cell = document.createElement("td");
-         const playerNameCell = document.createElement("td");
-         cell.appendChild(playerNameCell);
-         row.appendChild(document.createTextNode(game.players[playerKey].name));
-         Object.values(game.players[playerKey].stats).forEach(key => {
-            const cell = document.createElement("td");
-            cell.appendChild(document.createTextNode(key));
-            row.appendChild(cell); 
-         });
-         tblBody.appendChild(row);
-    });
-    tbl.appendChild(tblBody);
-    document.body.appendChild(tbl);
-    tbl.setAttribute("border", "2");
-    tbl.id = "charTable";
-}
 
-document.getElementById("charButton").addEventListener("click", function() {game.createEntity(document.getElementById("charName").value, true)});
-
-// game.createEntity('Rayne', true);
-
-// game.createEntity('Wynn', true);
-
-// game.createEntity('Platinum', true);
-
-// game.createEntity('Jon', true);
-
-
-
+document.getElementById("saveChar").addEventListener("click", function() {calc.save(document.getElementById("charName").value)});
+// document.getElementById("add-class").addEventListener("click", function() {calcLevel(document.getElementById("classes").value)});
+document.getElementById("add-class").addEventListener("click", function() {calc.creatures[calc.saveSlot].addLevel(document.getElementById("classes").value)});
