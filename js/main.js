@@ -1,7 +1,7 @@
 let charName = '';//character name
 let bio = '';//biological template
 let classes = [];//array of classes added to character
-let templates = [];//array of templates added to character
+let templates = '';//array of templates added to character
 let baseLevel = 0;//starting level from bio
 let levelAdjust = 0; //increase to level from templates and classes
 let effectiveLevel = 0;//final derived from bio, template and classes
@@ -59,16 +59,26 @@ function output(){//output char info to footer and console
 function update(){
     charName = document.getElementById("charName").value;
     bio = document.getElementById("biology-menu").value;
-    classes.push(document.getElementById("class-menu").value);
-    templates.push(document.getElementById("template-menu").value);
+    // classes.push(document.getElementById("class-menu").value);
+    // templates.push(document.getElementById("template-menu").value);
+    classes = document.getElementById("class-menu").value;
+    templates = document.getElementById("template-menu").value;
     personality = document.getElementById("personality-menu").value;
     culture = document.getElementById("culture-menu").value;
     bioList.forEach((element) => {
         if (element.name = bio){
-            console.log(`yes: ${element.levelMod}`)
+            console.log(`yes: ${element.levelMod}`);
             baseLevel = element.levelMod;
         } else{
-            console.log('no')
+            console.log('no');
+        }
+    });
+    templateList.forEach((element) => {
+        if (element.name = templates){
+            console.log(`Template: ${element.name} -> ${element.levelMod}`);
+            levelAdjust = element.levelMod;
+        } else{
+            console.log(`No template chosen`);
         }
     });
     calcLevel();
