@@ -1,96 +1,96 @@
-const calc = {
-    saveSlot: 0,
-    creatures: [],
-    save: function(name) {
-        if (calc.creatures.some(e => e.charName == name)){
-            this.overwrite(name);
-        } else {
-            this.saveAsNew();
-        };
-    },
-    load: function(name){
-        this.saveSlot = calc.creatures.findIndex(e => e.charName == name);
-        //eventually load information and set to page
-    },
-    overwrite: function(name) {
-        this.load(name);
-        const saveSlot = calc.saveSlot;
-        calc.creatures[saveSlot].build();
-        console.log(`Overwrote existing character named ${name} in character slot ${saveSlot} with new data.`);
-        console.log(calc.creatures[saveSlot]);
-    },
-    saveAsNew: function () {
-        let newCreature = new creature();
-        newCreature.build();
-        newCreature.rollStats();
-        this.creatures.push(newCreature);
-        console.log(`Saved ${newCreature.charName} as new character.`)
-    }
-}
+let charName = '';//character name
+let bio = '';//biological template
+let classes = [];//array of classes added to character
+let templates = [];//array of templates added to character
+let baseLevel = 0;//starting level from bio
+let levelAdjust = 0; //increase to level from templates and classes
+let effectiveLevel = 0;//final derived from bio, template and classes
+let stats = {//base statistics
+    con: 0,
+    str: 0,
+    dex: 0,
+    wis: 0,
+    int: 0,
+    cha: 0,
+};
+let personality = '';
+let culture = '';
 
-class creature{
-    constructor(){
-        this.charName = '';
-        this.classes = [];
-        this.baseLevel = 0;
-        this.classLevel = 0;
-        this.effectiveLevel = this.baseLevel + this.classLevel;
-        this.stats = {
-            con: 0,
-            str: 0,
-            dex: 0,
-            wis: 0,
-            int: 0,
-            cha: 0,
-        };
-        this.bioTemplate = '';
-        this.laTemplates = [];
-        this.laTemplateMod = 0;
-        this.personality = '';
-        this.culture = '';
-    };
-    rollStats() {
-        Object.keys(this.stats).forEach(stat => {
-          const rolls = new Array(4).fill(null).map(x => Math.floor(Math.random() * 6 + 1));
-          this.stats[stat] = rolls.reduce((sum, value) => sum + value, 0) - Math.min(...rolls);
-        });
-        console.log(this.stats)
-    }
-    rollStats() {
-        Object.keys(this.stats).forEach(stat => {
-          const rolls = new Array(4).fill(null).map(x => Math.floor(Math.random() * 6 + 1));
-          this.stats[stat] = rolls.reduce((sum, value) => sum + value, 0) - Math.min(...rolls);
-        });
-        console.log(this.stats)
-    }
-    addLevel(className) {
-        this.classes.push(className);
-        this.classLevel += classList.find(e => e.className === element).levelMod;
-    }
-    build() {
-        this.charName = document.getElementById('charName').value;
-        this.classes = document.getElementById('classes').value;
-        this.bioTemplate = document.getElementById('biology').value;
-        this.laTemplates = document.getElementById('templates').value;
-        this.laTemplateMod = 1;
-        this.personality = document.getElementById('personalities').value;
-        this.culture = document.getElementById('cultures').value;
-        console.log(`
-        Name: ${this.charName}\n
-        Level: ${this.effectiveLevel}\n
-        Classes: ${this.classes}\n
-        Stats: ${this.stats}\n
-        Race: ${this.bioTemplate}\n
-        Templates: ${this.laTemplates} with a LA mod of ${this.laTemplateMod}\n
-        Personality: ${this.personality}\n
-        Culture: ${this.culture}\n
-        `);
-        document.getElementById("finalString").innerText = `Saved ${this.personality} ${this.charName} the level ${this.effectiveLevel} ${this.laTemplates} ${this.bioTemplate} ${this.classes} of the ${this.culture}!`
-        console.log(`Saved ${this.personality} ${this.charName} the level ${this.effectiveLevel} ${this.laTemplates} ${this.bioTemplate} ${this.classes} of the ${this.culture}!`)
-    }
+//functions
+function addLevel(className){//add class name and mod to character
+    classes.push(className);//add class name to array of classes
+    document.getElementById("class-1-number").innerHTML++;
+    update();
+    console.log(`${charName}'s level adjust is now ${levelAdjust}`);
+};
+function calcLevel(){//automatically calculate level on dom change
+    effectiveLevel = baseLevel + levelAdjust;
+};
+function rollStats(){//generate array of stats and save to stats array
+    Object.keys(stats).forEach(stat => {
+        const rolls = new Array(4).fill(null).map(x => Math.floor(Math.random() * 6 + 1));
+        stats[stat] = rolls.reduce((sum, value) => sum + value, 0) - Math.min(...rolls);
+      });
+      console.log(stats)
+      document.getElementById("stat-array").innerHTML = `
+      Con:${stats.con}\n
+      Str:${stats.str}\n
+      Dex:${stats.dex}\n
+      Wis:${stats.wis}\n
+      Int:${stats.int}\n
+      Cha:${stats.cha}\n`;
+}
+function output(){//output char info to footer and console
+    //output to footer
+    document.getElementById("finalString").innerText = `Saved ${personality} ${charName} the level ${effectiveLevel} ${templates} ${bio} ${classes} of the ${culture}!`
+    console.log(`Saved ${personality} ${charName} the level ${effectiveLevel} ${templates} ${bio} ${classes} of the ${culture}!`)
+    //console log char
+    console.log(`
+    Name: ${charName}\n
+    Level: ${effectiveLevel}\n
+    Classes: ${classes}\n
+    Stats: ${stats}\n
+    Race: ${bio}\n
+    Templates: ${templates} with a LA mod of ${levelAdjust}\n
+    Personality: ${personality}\n
+    Culture: ${culture}\n
+    `);
+}
+function update(){
+    charName = document.getElementById("charName").value;
+    bio = document.getElementById("biology-menu").value;
+    classes.push(document.getElementById("class-menu").value);
+    templates.push(document.getElementById("template-menu").value);
+    personality = document.getElementById("personality-menu").value;
+    culture = document.getElementById("culture-menu").value;
+    bioList.forEach((element) => {
+        if (element.name = bio){
+            console.log(`yes: ${element.levelMod}`)
+            baseLevel = element.levelMod;
+        } else{
+            console.log('no')
+        }
+    });
+    calcLevel();
+    output();
+}
+function randomize(){
+    let menu = event.target.closest("div").querySelector(".menu");
+    let menuOfficial = menu.querySelector(".official").children;
+    let menuUnofficial = menu.querySelector(".unofficial").children;
+    let menuOptions = [...menuOfficial, ...menuUnofficial];
+    let random = Math.floor(Math.random() * menuOptions.length);
+    menu.value = menuOptions[random].value;
 }
 
 
-document.getElementById("saveChar").addEventListener("click", function() {calc.save(document.getElementById("charName").value)});
-// document.getElementById("add-class").addEventListener("click", function() {calcLevel(document.getElementById("classes").value)});
-document.getElementById("add-class").addEventListener("click", function() {calc.creatures[calc.saveSlot].addLevel(document.getElementById("classes").value)});
+//set char values with event listeners as they are changed
+const classMenu = document.getElementById('class-menu');
+classMenu.addEventListener("change", function() {output(classMenu.value)});
+document.getElementById("roll-stats").addEventListener("click", rollStats);
+document.getElementById("save-char").addEventListener("click", update);
+// document.getElementById('add-class').addEventListener("click", function() {addLevel(classMenu.value)});
+// document.getElementById("add-class").addEventListener("click", function() {calc.creatures[calc.saveSlot].addLevel(document.getElementById("classes").value)});
+
+const randomizers = document.querySelectorAll(".randomizer");
+randomizers.forEach(btn => {btn.addEventListener("click", randomize)});
