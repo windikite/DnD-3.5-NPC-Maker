@@ -1,22 +1,22 @@
 cultureList = [
     {
       name: "Cara Sì",
-        levelMod: 1,
+        levelMod: 0,
         official: false,
       },
       {
         name: "Dredge",
-        levelMod: 1,
+        levelMod: 0,
         official: false,
       },
       {
         name: "Hallowfolk",
-        levelMod: 1,
+        levelMod: 0,
         official: false,
       },
       {
         name: "Kuningrihi",
-        levelMod: 1,
+        levelMod: 0,
         official: false,
       },
 ]

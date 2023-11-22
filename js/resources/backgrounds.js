@@ -1,22 +1,22 @@
 backgroundList = [
     {
       name: "Artisan",
-        levelMod: 1,
+        levelMod: 0,
         official: true,
       },
       {
         name: "Aescetic",
-        levelMod: 1,
+        levelMod: 0,
         official: true,
       },
       {
         name: "Drifter",
-        levelMod: 1,
+        levelMod: 0,
         official: true,
       },
       {
         name: "Farmhand",
-        levelMod: 1,
+        levelMod: 0,
         official: true,
       },
 ]

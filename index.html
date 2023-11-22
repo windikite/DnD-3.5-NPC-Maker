@@ -40,8 +40,8 @@
                 <div>
                     <select name="template-menu" id="template-menu" class="menu">
                         <option value="">LA Template</option>
-                        <optgroup label="Official" id="T-O" class="official"></optgroup>
-                        <optgroup label="Unofficial" id="T-U" class="unofficial"></optgroup>
+                        <optgroup label="Official" id="Te-O" class="official"></optgroup>
+                        <optgroup label="Unofficial" id="Te-U" class="unofficial"></optgroup>
                     </select>   
                     <button class="randomizer">Randomize</button>
                 </div>
@@ -58,8 +58,8 @@
                 <div>
                     <select name="personality-menu" id="personality-menu" class="menu">
                         <option value="">Personality</option>
-                        <optgroup label="Official" id="P-O" class="official"></optgroup>
-                        <optgroup label="Unofficial" id="P-U" class="unofficial"></optgroup>
+                        <optgroup label="Official" id="Pe-O" class="official"></optgroup>
+                        <optgroup label="Unofficial" id="Pe-U" class="unofficial"></optgroup>
                     </select> 
                     <button class="randomizer">Randomize</button>
                 </div>
@@ -73,15 +73,13 @@
                     <button class="randomizer">Randomize</button>
                 </div>
                 <!-- class select -->
-                <div class="flex-container" id="class-selection">
-                    <div class="flex-item" id="class-1">
-                        <select name="class-menu" id="class-menu" class="menu">
-                            <option value="">Class</option>
-                            <optgroup label="Official" id="Cl-O" class="official"></optgroup>
-                            <optgroup label="Unofficial" id="Cl-U" class="unofficial"></optgroup>
-                        </select> 
-                        <button class="randomizer">Randomize</button>
-                    </div>   
+                <div>
+                    <select name="class-menu" id="class-menu" class="menu">
+                        <option value="">Class</option>
+                        <optgroup label="Official" id="Cl-O" class="official"></optgroup>
+                        <optgroup label="Unofficial" id="Cl-U" class="unofficial"></optgroup>
+                    </select> 
+                    <button class="randomizer">Randomize</button>
                 </div>
                 <div>
                     <button class="add-skills">Choose Skills</button>
@@ -89,8 +87,11 @@
                     <button class="level-up">Level Up</button>
                 </div>
                 <div>
-                    <br><button id="roll-stats">Roll Stats</button>
-                    <br><p id="stat-array"></p>
+                    <div>
+                        <br><label for="suffer">Check to suffer</label>
+                        <input type="checkbox" name="suffer" id="suffer">
+                        <button id="roll-stats">Roll Stats</button>
+                    </div>
                 </div>
             </div>
 
@@ -113,12 +114,38 @@
                 <p>feats and skill point distribution</p>  
             </div>
             
-            <br><button id="save-char">Save character</button>
+            <br><button id="save-char">Update character</button>
 
         </main>
     </div>
 
     <footer>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p id="con"></p>
+                <p id="str"></p>
+                <p id="dex"></p>
+                <p id="wis"></p>
+                <p id="int"></p>
+                <p id="cha"></p>
+            </div>
+            <div class="flex-item">
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+            <div class="flex-item">
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
         <p id="finalString">Choose options to build your character!</p>
     </footer>
 
@@ -133,91 +160,34 @@
     <script>
         const tabby = new Tabby('[data-tabs]');
 
-        //grab dom elements
-        const classOfficial = document.getElementById("Cl-O");
-        const classUnofficial = document.getElementById("Cl-U");
-        const bioOfficial = document.getElementById("Bi-O");
-        const bioUnofficial = document.getElementById("Bi-U");
-        const backgroundOfficial = document.getElementById("Ba-O");
-        const backgroundUnofficial = document.getElementById("Ba-U");
-        const templateOfficial = document.getElementById("T-O");
-        const templateUnofficial = document.getElementById("T-U");
-        const cultureOfficial = document.getElementById("Cu-O");
-        const cultureUnofficial = document.getElementById("Cu-U");
-        const personalityOfficial = document.getElementById("P-O");
-        const personalityUnofficial = document.getElementById("P-U");
+        //populate menus - accepts element and 
 
-        //populate menus
-        classList.forEach((element) => {
+        function populateMenu(e, z){
+            let element = e;
+            let menuOfficialStr = z.charAt(0).toUpperCase() + z.charAt(1) + "-O";
+            let menuUnofficialStr = z.charAt(0).toUpperCase() + z.charAt(1) + "-U";
+            let menuOfficial = document.getElementById(menuOfficialStr);
+            let menuUnofficial = document.getElementById(menuUnofficialStr);
             let option = document.createElement("option");
             option.value     = element.name;
-            option.innerHTML = element.name;
-            if (element.official == true){
-                classOfficial.appendChild(option);
-            } else if (element.official == false){
-                classUnofficial.appendChild(option);
+            if (element.levelMod > 0 || element.levelMod < 0 ){
+                option.innerHTML = `${element.name} | +${element.levelMod} Level Adjust`;
+            }else{
+                option.innerHTML = `${element.name}`;
             }
-        });
-        bioList.forEach((element) => {
-            let option = document.createElement("option");
-            option.value     = element.name;
-            option.innerHTML = element.name;
             if (element.official == true){
-                bioOfficial.appendChild(option);
+                menuOfficial.appendChild(option);
             } else if (element.official == false){
-                bioUnofficial.appendChild(option);
+                menuUnofficial.appendChild(option);
             }
-        });
-        backgroundList.forEach((element) => {
-            let option = document.createElement("option");
-            option.value     = element.name;
-            option.innerHTML = element.name;
-            if (element.official == true){
-                backgroundOfficial.appendChild(option);
-            } else if (element.official == false){
-                backgroundUnofficial.appendChild(option);
-            }
-        });
-        personalityList.forEach((element) => {
-            let option = document.createElement("option");
-            option.value     = element.name;
-            option.innerHTML = element.name;
-            if (element.official == true){
-                personalityOfficial.appendChild(option);
-            } else if (element.official == false){
-                personalityUnofficial.appendChild(option);
-            }
-        });
-        templateList.forEach((element) => {
-            let option = document.createElement("option");
-            option.value     = element.name;
-            option.innerHTML = element.name;
-            if (element.official == true){
-                templateOfficial.appendChild(option);
-            } else if (element.official == false){
-                templateUnofficial.appendChild(option);
-            }
-        });
-        personalityList.forEach((element) => {
-            let option = document.createElement("option");
-            option.value     = element.name;
-            option.innerHTML = element.name;
-            if (element.official == true){
-                personalityOfficial.appendChild(option);
-            } else if (element.official == false){
-                personalityUnofficial.appendChild(option);
-            }
-        });
-        cultureList.forEach((element) => {
-            let option = document.createElement("option");
-            option.value     = element.name;
-            option.innerHTML = element.name;
-            if (element.official == true){
-                cultureOfficial.appendChild(option);
-            } else if (element.official == false){
-                cultureUnofficial.appendChild(option);
-            }
-        });
+        }
+
+        classList.forEach((element) => {populateMenu(element, "classList");});
+        bioList.forEach((element) => {populateMenu(element, "bioList");});
+        backgroundList.forEach((element) => {populateMenu(element, "backgroundList");});
+        templateList.forEach((element) => {populateMenu(element, "templateList");});
+        personalityList.forEach((element) => {populateMenu(element, "personalityList");});
+        cultureList.forEach((element) => {populateMenu(element, "cultureList");});
 
     </script>
         

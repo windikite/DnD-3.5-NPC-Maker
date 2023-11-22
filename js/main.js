@@ -13,6 +13,14 @@ let stats = {//base statistics
     int: 0,
     cha: 0,
 };
+let statBonuses = {//base statistics
+    con: 0,
+    str: 0,
+    dex: 0,
+    wis: 0,
+    int: 0,
+    cha: 0,
+};
 let personality = '';
 let culture = '';
 
@@ -27,23 +35,25 @@ function calcLevel(){//automatically calculate level on dom change
     effectiveLevel = baseLevel + levelAdjust;
 };
 function rollStats(){//generate array of stats and save to stats array
-    Object.keys(stats).forEach(stat => {
-        const rolls = new Array(4).fill(null).map(x => Math.floor(Math.random() * 6 + 1));
-        stats[stat] = rolls.reduce((sum, value) => sum + value, 0) - Math.min(...rolls);
-      });
-      console.log(stats)
-      document.getElementById("stat-array").innerHTML = `
-      Con:${stats.con}\n
-      Str:${stats.str}\n
-      Dex:${stats.dex}\n
-      Wis:${stats.wis}\n
-      Int:${stats.int}\n
-      Cha:${stats.cha}\n`;
+    let suffer = document.getElementById("suffer").checked;
+    if (suffer == true){
+        Object.keys(stats).forEach(stat => {
+            const rolls = new Array(4).fill(null).map(x => Math.floor(Math.random() * 6 + 1));
+            stats[stat] = rolls.reduce((sum, value) => sum + value, 0) - Math.max(...rolls);
+        });
+    }else{
+        Object.keys(stats).forEach(stat => {
+            const rolls = new Array(4).fill(null).map(x => Math.floor(Math.random() * 6 + 1));
+            stats[stat] = rolls.reduce((sum, value) => sum + value, 0) - Math.min(...rolls);
+        });
+    }
+    let statTotal = Object.values(stats).reduce((sum, value) => sum + value, 0);
+    console.log(`Total stats: ${statTotal}`, stats);
 }
 function output(){//output char info to footer and console
     //output to footer
-    document.getElementById("finalString").innerText = `Saved ${personality} ${charName} the level ${effectiveLevel} ${templates} ${bio} ${classes} of the ${culture}!`
-    console.log(`Saved ${personality} ${charName} the level ${effectiveLevel} ${templates} ${bio} ${classes} of the ${culture}!`)
+    document.getElementById("finalString").innerText = `Saved ${personality} ${charName} the level ${effectiveLevel} ${templates} ${bio} ${classes} of the ${culture}!`;
+    console.log(`Saved ${personality} ${charName} the level ${effectiveLevel} ${templates} ${bio} ${classes} of the ${culture}!`);
     //console log char
     console.log(`
     Name: ${charName}\n
@@ -55,6 +65,12 @@ function output(){//output char info to footer and console
     Personality: ${personality}\n
     Culture: ${culture}\n
     `);
+    document.getElementById("con").innerText = `Con: ${stats.con} + ${statBonuses.con} = ${stats.con + statBonuses.con}`;
+    document.getElementById("str").innerText = `Str: ${stats.str} + ${statBonuses.str} = ${stats.str + statBonuses.str}`;
+    document.getElementById("dex").innerText = `Dex: ${stats.dex} + ${statBonuses.dex} = ${stats.dex + statBonuses.dex}`;
+    document.getElementById("wis").innerText = `Wis: ${stats.wis} + ${statBonuses.wis} = ${stats.wis + statBonuses.wis}`;
+    document.getElementById("int").innerText = `Int: ${stats.int} + ${statBonuses.int} = ${stats.int + statBonuses.int}`;
+    document.getElementById("cha").innerText = `Cha: ${stats.cha} + ${statBonuses.cha} = ${stats.cha + statBonuses.cha}`;
 }
 function update(){
     charName = document.getElementById("charName").value;
@@ -66,19 +82,26 @@ function update(){
     personality = document.getElementById("personality-menu").value;
     culture = document.getElementById("culture-menu").value;
     bioList.forEach((element) => {
-        if (element.name = bio){
-            console.log(`yes: ${element.levelMod}`);
+        if (element.name == bio){
             baseLevel = element.levelMod;
-        } else{
-            console.log('no');
+            statBonuses.con = 0;
+            statBonuses.str = 0;
+            statBonuses.dex = 0;
+            statBonuses.wis = 0;
+            statBonuses.int = 0;
+            statBonuses.cha = 0;
+            statBonuses.con += element.con;
+            statBonuses.str += element.str;
+            statBonuses.dex += element.dex;
+            statBonuses.wis += element.wis;
+            statBonuses.int += element.int;
+            statBonuses.cha += element.cha;
         }
     });
     templateList.forEach((element) => {
-        if (element.name = templates){
+        if (element.name == templates){
             console.log(`Template: ${element.name} -> ${element.levelMod}`);
             levelAdjust = element.levelMod;
-        } else{
-            console.log(`No template chosen`);
         }
     });
     calcLevel();
@@ -95,8 +118,8 @@ function randomize(){
 
 
 //set char values with event listeners as they are changed
-const classMenu = document.getElementById('class-menu');
-classMenu.addEventListener("change", function() {output(classMenu.value)});
+// const classMenu = document.getElementById('class-menu');
+// classMenu.addEventListener("change", function() {output(classMenu.value)});
 document.getElementById("roll-stats").addEventListener("click", rollStats);
 document.getElementById("save-char").addEventListener("click", update);
 // document.getElementById('add-class').addEventListener("click", function() {addLevel(classMenu.value)});

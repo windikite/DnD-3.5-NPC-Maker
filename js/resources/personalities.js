@@ -1,22 +1,22 @@
 personalityList = [
     {
       name: "Agent",
-        levelMod: 1,
+        levelMod: 0,
         official: true,
       },
       {
         name: "Challenger",
-        levelMod: 1,
+        levelMod: 0,
         official: true,
       },
       {
         name: "Companion",
-        levelMod: 1,
+        levelMod: 0,
         official: true,
       },
       {
         name: "Crusader",
-        levelMod: 1,
+        levelMod: 0,
         official: true,
       },
 ]
