@@ -86,47 +86,64 @@
                     <button class="roll-loot">Roll Loot</button>
                     <button class="level-up">Level Up</button>
                 </div>
-                <div>
+                <div id="stat-selection">
                     <div>
-                        <br><label for="suffer">Check to suffer</label>
+                        <select name="" id="stat-style-select">
+                            <option value="" selected >Choose Stat Generation Method</option>
+                            <option value="random">Random Array</option>
+                            <option value="buy">Point Buy</option>
+                            <option value="non-elite">Non-elite monster</option>
+                            <option value="elite">Elite Monster</option>
+                        </select>
+                        <label for="suffer">Check to suffer</label>
                         <input type="checkbox" name="suffer" id="suffer">
                         <button id="roll-stats">Roll Stats</button>
                     </div>
-                </div>
-                <div id="stat-selection">
                     <div id="stat-display">
-                        <div class="stat-column">
+                        <div class="stat-row">
+                            <p id="con-label">Con</p>
+                            <select name="" class="stat-select"></select>
                             <button class="incrementer">+</button>
                             <p class="stat-box">0</p>
                             <button class="decrementer">-</button>
                         </div>
-                        <div class="stat-column">
+                        <div class="stat-row">
+                            <p id="str-label">Str</p>
+                            <select name="" class="stat-select"></select>
                             <button class="incrementer">+</button>
                             <p class="stat-box">0</p>
                             <button class="decrementer">-</button>
                         </div>
-                        <div class="stat-column">
+                        <div class="stat-row">
+                            <p id="dex-label">Dex</p>
+                            <select name="" class="stat-select"></select>
                             <button class="incrementer">+</button>
                             <p class="stat-box">0</p>
                             <button class="decrementer">-</button>
                         </div>
-                        <div class="stat-column">
+                        <div class="stat-row">
+                            <p id="wis-label">Wis</p>
+                            <select name="" class="stat-select"></select>
                             <button class="incrementer">+</button>
                             <p class="stat-box">0</p>
                             <button class="decrementer">-</button>
                         </div>
-                        <div class="stat-column">
+                        <div class="stat-row">
+                            <p id="int-label">Int</p>
+                            <select name="" class="stat-select"></select>
                             <button class="incrementer">+</button>
                             <p class="stat-box">0</p>
                             <button class="decrementer">-</button>
                         </div>
-                        <div class="stat-column">
+                        <div class="stat-row">
+                            <p id="cha-label">Cha</p>
+                            <select name="" class="stat-select"></select>
                             <button class="incrementer">+</button>
                             <p class="stat-box">0</p>
                             <button class="decrementer">-</button>
                         </div>
                     </div>
-                    <div id="stat-display" class="flex-item">
+                    <div id="" class="flex-item">
                         
                     </div>
                 </div>

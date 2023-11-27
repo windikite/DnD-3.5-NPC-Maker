@@ -26,13 +26,13 @@ body{
     /* border: dashed red 3px; */
     padding:10px;
     margin:10px;
-    height:500px;
+    /* height:500px; */
 }
 .tabbed-content{
     background-color: var(--sub-color);
     /* border: dashed rgb(134, 110, 110) 3px; */
     padding: 10px;
-    height:400px;
+    /* height:400px; */
 }
 header{
     background-color: var(--sub-color);
@@ -83,19 +83,21 @@ footer{
 #stat-selection{
     display: flex;
     flex-direction: column;
+    background-color: var(--accent-color);
 }
 #stat-display{
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: var(--main-color);
 }
-.stat-column{
-    flex-direction: column;
-    width:30px;
-    height:65px;
+.stat-row{
+    display: flex;
+    flex-direction: row;
+    width:200px;
+    height:30px;
     background-color: var(--sub-color);
     margin: 5px;
     text-align: center;
+    align-items: center;
     border-radius: 5px;
 }
 .incrementer, .decrementer{
@@ -103,10 +105,37 @@ footer{
     height:20px;
     margin:0;
 }
-.stat-column p{
+.stat-row p{
     background-color:var(--accent-color);
     width:20px;
     height:20px;
     margin:auto;
     border-radius: 5px;
+}
+#con-label{
+    background-color: red;
+    width:80px;
+}
+#str-label{
+    background-color: orange;
+    width:80px;
+}
+#dex-label{
+    background-color: yellow;
+    width:80px;
+}
+#wis-label{
+    background-color: green;
+    width:80px;
+}
+#int-label{
+    background-color: blue;
+    width:80px;
+}
+#cha-label{
+    background-color:purple;
+    width:80px;
+}
+.stat-select{
+    width:50px;
 }

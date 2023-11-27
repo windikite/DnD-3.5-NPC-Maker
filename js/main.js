@@ -57,7 +57,7 @@ function rollArray(){
     if (suffer == true){
         for (let i = 0; i < 6; i++) {
             const rolls = new Array(4).fill(null).map(x => Math.floor(Math.random() * 6 + 1));
-            statArray.push(rolls.reduce((sum, value) => sum + value, 0) - Math.min(...rolls));
+            statArray.push(rolls.reduce((sum, value) => sum + value, 0) - Math.max(...rolls));
         }
     }else{
         for (let i = 0; i < 6; i++) {
@@ -67,12 +67,34 @@ function rollArray(){
     }
     let statTotal = Object.values(statArray).reduce((sum, value) => sum + value, 0);
     console.log(`Total stats: ${statTotal}`, statArray);
-    const statBoxes = [];
-    statBoxes.push(document.querySelectorAll("stat-box"));
-    // statBoxes.forEach((element) => {
-    //     element.innerText = statArray[element];
-    // });
-    console.log(statBoxes[0])
+    const statMenus = document.querySelectorAll(".stat-select");
+    
+    statMenus.forEach((element) => {
+        //clears menus
+        while (element.length > 0){
+            element.removeChild(element.children[0]);
+        }
+        const choicesArr = [...statArray];
+        while (choicesArr.length > 0){
+            let option = document.createElement("option");
+            let stat = choicesArr.sort((a, b) => a - b).reverse().splice(0, 1);
+            option.value = stat;
+            option.innerHTML = stat;
+            element.appendChild(option);
+        }
+    })
+}
+function tuneMenu(){
+    let mode = document.getElementById("stat-style-select").value;
+    if (mode == "random"){
+        console.log("random");
+    }else if (mode == "buy"){
+        console.log("buy");
+    }else if (mode == "non-elite"){
+        console.log("non-elite");
+    }else if (mode == "elite"){
+        console.log("elite");
+    }
 }
 function output(){//output char info to footer and console
     //output to footer
@@ -164,7 +186,7 @@ function randomizeAll(){
 //set char values with event listeners as they are changed
 // const classMenu = document.getElementById('class-menu');
 // classMenu.addEventListener("change", function() {output(classMenu.value)});
-document.getElementById("roll-stats").addEventListener("click", rollStats);
+document.getElementById("roll-stats").addEventListener("click", rollArray);
 document.getElementById("save-char").addEventListener("click", update);
 // document.getElementById('add-class').addEventListener("click", function() {addLevel(classMenu.value)});
 // document.getElementById("add-class").addEventListener("click", function() {calc.creatures[calc.saveSlot].addLevel(document.getElementById("classes").value)});
@@ -172,3 +194,4 @@ document.getElementById("save-char").addEventListener("click", update);
 const randomizers = document.querySelectorAll(".randomizer");
 randomizers.forEach(btn => {btn.addEventListener("click", randomize)});
 document.getElementById("random-all").addEventListener("click", randomizeAll);
+document.getElementById("stat-style-select").addEventListener("change", tuneMenu)
