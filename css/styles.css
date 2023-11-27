@@ -80,3 +80,33 @@ footer{
     border-radius: 5px;
     height:30px;
 }
+#stat-selection{
+    display: flex;
+    flex-direction: column;
+}
+#stat-display{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--main-color);
+}
+.stat-column{
+    flex-direction: column;
+    width:30px;
+    height:65px;
+    background-color: var(--sub-color);
+    margin: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+.incrementer, .decrementer{
+    width:20px;
+    height:20px;
+    margin:0;
+}
+.stat-column p{
+    background-color:var(--accent-color);
+    width:20px;
+    height:20px;
+    margin:auto;
+    border-radius: 5px;
+}
