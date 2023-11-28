@@ -26,7 +26,10 @@
             <div id="step1" class="tabbed-content"> 
 
                 <!-- Char Name -->
-                <input type="text" id="charName" placeholder="Character Name">
+                <div>
+                    <input type="text" id="charName" placeholder="Character Name">
+                </div>
+                
                 <!-- biology select -->
                 <div>
                     <select name="biology-menu" id="biology-menu" class="menu">
@@ -90,57 +93,128 @@
                     <div>
                         <select name="" id="stat-style-select">
                             <option value="" selected >Choose Stat Generation Method</option>
-                            <option value="random">Random Array</option>
-                            <option value="buy">Point Buy</option>
-                            <option value="non-elite">Non-elite monster</option>
-                            <option value="elite">Elite Monster</option>
+                            <optgroup>
+                                <option value="random">4d6 Drop Lowest</option>
+                                <option value="buy">Point Buy</option>
+                                <option value="non-elite">Non-elite monster</option>
+                                <option value="elite">Elite Monster</option>
+                                <option value="random-bad">4d6 Drop HIGHEST</option>
+                            </optgroup>
+                            
                         </select>
-                        <label for="suffer">Check to suffer</label>
-                        <input type="checkbox" name="suffer" id="suffer">
-                        <button id="roll-stats">Roll Stats</button>
+                        <button id="get-stats">Get Stats</button>
                     </div>
-                    <div id="stat-display">
-                        <div class="stat-row">
-                            <p id="con-label">Con</p>
-                            <select name="" class="stat-select"></select>
-                            <button class="incrementer">+</button>
-                            <p class="stat-box">0</p>
-                            <button class="decrementer">-</button>
+                    <div id="stat-area">
+                        <div>
+                            <p id="points">0</p>
+                        </div>
+                        <div class="stat-row ">
+                            <div class="stat-selector">
+                                <p id="con-label" class="">Con</p>
+                                <select name="" class="stat-select"></select>
+                            </div>
+                            <div class="point-buy">
+                                <button class="incrementer">+</button>
+                                <p class="invested-points">0</p>
+                                <button class="decrementer">-</button>
+                            </div>
+                            <div class="stat-bonus-box">
+                                <p>+</p>
+                                <p id="con-bonus" class="stat-bonus"></p>
+                            </div> 
+                            <div class="stat-display">
+                                <p id="final-con" class="stat-box">0</p>
+                            </div> 
                         </div>
                         <div class="stat-row">
-                            <p id="str-label">Str</p>
-                            <select name="" class="stat-select"></select>
-                            <button class="incrementer">+</button>
-                            <p class="stat-box">0</p>
-                            <button class="decrementer">-</button>
+                            <div class="stat-selector">
+                                <p id="str-label">Str</p>
+                                <select name="" class="stat-select"></select>
+                            </div>
+                            <div class="point-buy">
+                                <button class="incrementer">+</button>
+                                <p class="invested-points">0</p>
+                                <button class="decrementer">-</button>
+                            </div>
+                            <div class="stat-bonus-box">
+                                <p>+</p>
+                                <p id="str-bonus" class="stat-bonus"></p>
+                            </div> 
+                            <div class="stat-display">
+                                <p id="final-str" class="stat-box">0</p>
+                            </div> 
                         </div>
                         <div class="stat-row">
-                            <p id="dex-label">Dex</p>
-                            <select name="" class="stat-select"></select>
-                            <button class="incrementer">+</button>
-                            <p class="stat-box">0</p>
-                            <button class="decrementer">-</button>
+                            <div class="stat-selector">
+                                <p id="dex-label">Dex</p>
+                                <select name="" class="stat-select"></select>
+                            </div>
+                            <div class="point-buy">
+                                <button class="incrementer">+</button>
+                                <p class="invested-points">0</p>
+                                <button class="decrementer">-</button>
+                            </div>
+                            <div class="stat-bonus-box">
+                                <p>+</p>
+                                <p id="dex-bonus" class="stat-bonus"></p>
+                            </div> 
+                            <div class="stat-display">
+                                <p id="final-dex" class="stat-box">0</p>
+                            </div>   
                         </div>
                         <div class="stat-row">
-                            <p id="wis-label">Wis</p>
-                            <select name="" class="stat-select"></select>
-                            <button class="incrementer">+</button>
-                            <p class="stat-box">0</p>
-                            <button class="decrementer">-</button>
+                            <div class="stat-selector">
+                                <p id="wis-label">Wis</p>
+                                <select name="" class="stat-select"></select>
+                            </div>
+                            <div class="point-buy">
+                                <button class="incrementer">+</button>
+                                <p class="invested-points">0</p>
+                                <button class="decrementer">-</button>
+                            </div>
+                            <div class="stat-bonus-box">
+                                <p>+</p>
+                                <p id="wis-bonus" class="stat-bonus"></p>
+                            </div> 
+                            <div class="stat-display">
+                                <p id="final-wis" class="stat-box">0</p>
+                            </div> 
                         </div>
                         <div class="stat-row">
-                            <p id="int-label">Int</p>
-                            <select name="" class="stat-select"></select>
-                            <button class="incrementer">+</button>
-                            <p class="stat-box">0</p>
-                            <button class="decrementer">-</button>
+                            <div class="stat-selector">
+                                <p id="int-label">Int</p>
+                                <select name="" class="stat-select"></select>
+                            </div>
+                            <div class="point-buy">
+                                <button class="incrementer">+</button>
+                                <p class="invested-points">0</p>
+                                <button class="decrementer">-</button>
+                            </div>
+                            <div class="stat-bonus-box">
+                                <p>+</p>
+                                <p id="int-bonus" class="stat-bonus"></p>
+                            </div> 
+                            <div class="stat-display">
+                                <p id="final-int" class="stat-box">0</p>
+                            </div> 
                         </div>
                         <div class="stat-row">
-                            <p id="cha-label">Cha</p>
-                            <select name="" class="stat-select"></select>
-                            <button class="incrementer">+</button>
-                            <p class="stat-box">0</p>
-                            <button class="decrementer">-</button>
+                            <div class="stat-selector">
+                                <p id="cha-label">Cha</p>
+                                <select name="" class="stat-select"></select>
+                            </div>
+                            <div class="point-buy">
+                                <button class="incrementer">+</button>
+                                <p class="invested-points">0</p>
+                                <button class="decrementer">-</button>
+                            </div>
+                            <div class="stat-bonus-box">
+                                <p>+</p>
+                                <p id="cha-bonus" class="stat-bonus"></p>
+                            </div> 
+                            <div class="stat-display">
+                                <p id="final-cha" class="stat-box">0</p>
+                            </div> 
                         </div>
                     </div>
                     <div id="" class="flex-item">

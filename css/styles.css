@@ -76,7 +76,7 @@ footer{
     height:30px;
 }
 #charName{
-    min-width: 400px;
+    width: 100%;
     border-radius: 5px;
     height:30px;
 }
@@ -85,25 +85,47 @@ footer{
     flex-direction: column;
     background-color: var(--accent-color);
 }
-#stat-display{
+#stat-area{
     flex-direction: column;
     background-color: var(--main-color);
+    margin:2px;
 }
 .stat-row{
     display: flex;
     flex-direction: row;
-    width:200px;
-    height:30px;
+    /* width:200px; */
+    height:40px;
     background-color: var(--sub-color);
     margin: 5px;
     text-align: center;
     align-items: center;
     border-radius: 5px;
 }
+.stat-selector{
+    display: flex;
+    background-color: var(--main-color);
+    height:30px;
+    border-radius: 5px;
+    padding:2px;
+}
+.point-buy{
+    display: flex;
+    background-color: var(--main-color);
+    height:30px;
+    border-radius: 5px;
+    padding:2px;
+}
+.stat-display{
+    display: flex;
+    background-color: var(--main-color);
+    height:30px;
+    border-radius: 5px;
+    padding:2px;
+}
 .incrementer, .decrementer{
     width:20px;
     height:20px;
-    margin:0;
+    margin: auto;
 }
 .stat-row p{
     background-color:var(--accent-color);
@@ -138,4 +160,34 @@ footer{
 }
 .stat-select{
     width:50px;
+}
+.hidden{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.show{
+    position: 'static';
+    opacity: 1;
+    pointer-events: 'all';
+}
+#points{
+    background-color:var(--accent-color);
+    width:20px;
+    height:20px;
+    margin:auto;
+    border-radius: 5px;
+    text-align: center;
+}
+.stat-bonus-box{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--main-color);
+    height:30px;
+    border-radius: 5px;
+    padding:2px;
+}
+.stat-bonus-box p{
+    background-color: var(--main-color);
+    color:mintcream;
 }
