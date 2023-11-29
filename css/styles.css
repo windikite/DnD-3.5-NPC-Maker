@@ -45,7 +45,7 @@ footer{
     /* border: dashed red 3px; */
     padding:10px;
     margin:10px;
-    height:200px;
+    height:auto;
 }
 .flex-container{
     display: flex;
@@ -72,7 +72,7 @@ footer{
     margin:2px;
 }
 .menu{
-    min-width: 250px;
+    min-width: 210px;
     height:30px;
 }
 #charName{
@@ -135,27 +135,27 @@ footer{
     border-radius: 5px;
 }
 #con-label{
-    background-color: red;
+    background-color: rgb(253, 129, 129);
     width:80px;
 }
 #str-label{
-    background-color: orange;
+    background-color: rgb(255, 208, 121);
     width:80px;
 }
 #dex-label{
-    background-color: yellow;
+    background-color: rgb(255, 255, 119);
     width:80px;
 }
 #wis-label{
-    background-color: green;
+    background-color: rgb(2, 199, 2);
     width:80px;
 }
 #int-label{
-    background-color: blue;
+    background-color: rgb(108, 108, 252);
     width:80px;
 }
 #cha-label{
-    background-color:purple;
+    background-color:rgb(250, 117, 250);
     width:80px;
 }
 .stat-select{
@@ -190,4 +190,10 @@ footer{
 .stat-bonus-box p{
     background-color: var(--main-color);
     color:mintcream;
+}
+#export{
+    background-color: var(--accent-color);
+    width: 95%;
+    height: 95%;
+    margin:auto;
 }

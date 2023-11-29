@@ -8,20 +8,20 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
+    <!-- <header>
         <p>header placeholder text</p>
-    </header>
+    </header> -->
 
     <div class="container">
         <main>
 
-            <ul data-tabs>
+            <!-- <ul data-tabs>
                 <li><a data-tabby-default href="#step1">Start</a></li>
                 <li><a href="#step2">Step 2</a></li>
                 <li><a href="#step3">Step 3</a></li>
                 <li><a href="#step4">Step 4</a></li>
                 <li><a href="#step5">Step 5</a></li>
-            </ul>
+            </ul> -->
 
             <div id="step1" class="tabbed-content"> 
 
@@ -59,8 +59,8 @@
                 </div>
                 <!-- Personality Archetypes -->
                 <div>
-                    <select name="personality-menu" id="personality-menu" class="menu">
-                        <option value="">Personality</option>
+                    <select name="personality-archetype-menu" id="personality-archetype-menu" class="menu">
+                        <option value="">Personality Archetype</option>
                         <optgroup label="Official" id="Pe-O" class="official"></optgroup>
                         <optgroup label="Unofficial" id="Pe-U" class="unofficial"></optgroup>
                     </select> 
@@ -108,24 +108,6 @@
                         <div>
                             <p id="points">0</p>
                         </div>
-                        <div class="stat-row ">
-                            <div class="stat-selector">
-                                <p id="con-label" class="">Con</p>
-                                <select name="" class="stat-select"></select>
-                            </div>
-                            <div class="point-buy">
-                                <button class="incrementer">+</button>
-                                <p class="invested-points">0</p>
-                                <button class="decrementer">-</button>
-                            </div>
-                            <div class="stat-bonus-box">
-                                <p>+</p>
-                                <p id="con-bonus" class="stat-bonus"></p>
-                            </div> 
-                            <div class="stat-display">
-                                <p id="final-con" class="stat-box">0</p>
-                            </div> 
-                        </div>
                         <div class="stat-row">
                             <div class="stat-selector">
                                 <p id="str-label">Str</p>
@@ -162,9 +144,9 @@
                                 <p id="final-dex" class="stat-box">0</p>
                             </div>   
                         </div>
-                        <div class="stat-row">
+                        <div class="stat-row ">
                             <div class="stat-selector">
-                                <p id="wis-label">Wis</p>
+                                <p id="con-label" class="">Con</p>
                                 <select name="" class="stat-select"></select>
                             </div>
                             <div class="point-buy">
@@ -174,10 +156,10 @@
                             </div>
                             <div class="stat-bonus-box">
                                 <p>+</p>
-                                <p id="wis-bonus" class="stat-bonus"></p>
+                                <p id="con-bonus" class="stat-bonus"></p>
                             </div> 
                             <div class="stat-display">
-                                <p id="final-wis" class="stat-box">0</p>
+                                <p id="final-con" class="stat-box">0</p>
                             </div> 
                         </div>
                         <div class="stat-row">
@@ -198,6 +180,25 @@
                                 <p id="final-int" class="stat-box">0</p>
                             </div> 
                         </div>
+                        <div class="stat-row">
+                            <div class="stat-selector">
+                                <p id="wis-label">Wis</p>
+                                <select name="" class="stat-select"></select>
+                            </div>
+                            <div class="point-buy">
+                                <button class="incrementer">+</button>
+                                <p class="invested-points">0</p>
+                                <button class="decrementer">-</button>
+                            </div>
+                            <div class="stat-bonus-box">
+                                <p>+</p>
+                                <p id="wis-bonus" class="stat-bonus"></p>
+                            </div> 
+                            <div class="stat-display">
+                                <p id="final-wis" class="stat-box">0</p>
+                            </div> 
+                        </div>
+        
                         <div class="stat-row">
                             <div class="stat-selector">
                                 <p id="cha-label">Cha</p>
@@ -235,11 +236,11 @@
 
 
             <div id="step4" class="tabbed-content">
-               <p>armor, weapons and other equipment</p>    
+               <!-- <p>armor, weapons and other equipment</p>     -->
             </div>
 
             <div id="step5" class="tabbed-content">
-                <p>feats and skill point distribution</p>  
+                <!-- <p>feats and skill point distribution</p>   -->
             </div>
             
             <br><button id="save-char">Update character</button>
@@ -249,33 +250,11 @@
     </div>
 
     <footer>
-        <div class="flex-container">
-            <div class="flex-item">
-                <p id="con"></p>
-                <p id="str"></p>
-                <p id="dex"></p>
-                <p id="wis"></p>
-                <p id="int"></p>
-                <p id="cha"></p>
-            </div>
-            <div class="flex-item">
-                <p id="level"></p>
-                <p id="biology"></p>
-                <p id="background"></p>
-                <p id="personality"></p>
-                <p id="culture"></p>
-                <p id=""></p>
-            </div>
-            <div class="flex-item">
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-            </div>
+        <h3 id="finalString">Raw Character Data for Export</h3>
+        <div id="export">
+            <p></p>
         </div>
-        <p id="finalString">Choose options to build your character!</p>
+        
     </footer>
 
     
@@ -287,7 +266,7 @@
     <script src="./js/resources/templates.js"></script> 
     <script src="./js/resources/cultures.js"></script>
     <script>
-        const tabby = new Tabby('[data-tabs]');
+        // const tabby = new Tabby('[data-tabs]');
 
         //populate menus - accepts element and 
 
@@ -315,7 +294,7 @@
         bioList.forEach((element) => {populateMenu(element, "bioList");});
         backgroundList.forEach((element) => {populateMenu(element, "backgroundList");});
         templateList.forEach((element) => {populateMenu(element, "templateList");});
-        personalityList.forEach((element) => {populateMenu(element, "personalityList");});
+        personalityArchetypeList.forEach((element) => {populateMenu(element, "personalityArchetypeList");});
         cultureList.forEach((element) => {populateMenu(element, "cultureList");});
 
     </script>

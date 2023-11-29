@@ -1,7 +1,7 @@
 const bioList = [
     {
         name: "Human",
-        helpText: "",
+        helpText: "helptext",
         levelMod: 0,
         official: true,
         con: 0,
@@ -25,7 +25,7 @@ const bioList = [
       },
       {
         name: "Orc",
-        helpText: "",
+        helpText: "helptext",
         levelMod: 0,
         official: true,
         con: 0,
@@ -37,7 +37,7 @@ const bioList = [
       },
       {
         name: "Gnome",
-        helpText: "",
+        helpText: "helptext",
         levelMod: 0,
         official: true,
         con: +2,
@@ -61,7 +61,7 @@ const bioList = [
       },
       {
         name: "Warforged",
-        helpText: "",
+        helpText: "helptext",
         levelMod: 0,
         official: true,
         con: +2,

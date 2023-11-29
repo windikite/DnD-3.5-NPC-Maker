@@ -1,11 +1,12 @@
 let charName = '';//character name
-let bio = '';//biological template
+let bio = [];//biological template
 let classes = [];//array of classes added to character
-let templates = '';//array of templates added to character
+let templates = [];//array of templates added to character
 let baseLevel = 0;//starting level from bio
 let levelAdjust = 0; //increase to level from templates and classes
 let effectiveLevel = 0;//final derived from bio, template and classes
 const statArray = [];
+const takenChoices = [];
 let stats = {//base statistics
     con: 0,
     str: 0,
@@ -22,9 +23,9 @@ let statBonuses = {//base statistics
     int: 0,
     cha: 0,
 };
-let background = '';
-let personality = '';
-let culture = '';
+let background = [];
+let personalityArchetype = [];
+let culture = [];
 
 
 //functions
@@ -88,6 +89,13 @@ function getStats(){
     while (statArray.length > 0){
         statArray.pop();
     }
+    //clear points area
+    points.innerHTML = 0;
+    const allInvestedPoints = document.querySelectorAll(".invested-points");
+    allInvestedPoints.forEach((element) => {
+        element.innerHTML = 0;
+    });
+    //set up new stat area
     if (mode == "random"){
         rollArray();
     }else if (mode == "buy"){
@@ -104,8 +112,29 @@ function getStats(){
             statArray.push(17);   
         }
     } else if (mode == "random-bad"){
-        rollArray(true);
+        rollArray(true); 
     }
+    const statMenus = document.querySelectorAll(".stat-select");  
+    statMenus.forEach((element) => {
+        //clears menus
+        while (element.length > 0){
+            element.removeChild(element.children[0]);
+        }
+        let defaultChoice = document.createElement("option");
+        defaultChoice.value = "";
+        defaultChoice.innerHTML = "--";
+        element.appendChild(defaultChoice);
+
+        const choicesArr = [...statArray];
+        while (choicesArr.length > 0){
+            let option = document.createElement("option");
+            let stat = choicesArr.splice(0, 1);
+            // .sort((a, b) => a - b).reverse()
+            option.value = stat;
+            option.innerHTML = stat;
+            element.appendChild(option);
+        }
+    })
     update();
 }
 // function tuneMenu(){
@@ -136,62 +165,52 @@ function getStats(){
 //         console.log("elite");
 //     }
 // }
-function output(){//output char info to footer and console
-    //output to footer
-    // document.getElementById("finalString").innerText = `Saved ${personality} ${charName} the level ${effectiveLevel} ${templates} ${bio} ${classes} of the ${culture}!`;
-    // console.log(`Saved ${personality} ${charName} the level ${effectiveLevel} ${templates} ${bio} ${classes} of the ${culture}!`);
-    //console log char
-    // console.log(`
-    // Name: ${charName}\n
-    // Level: ${effectiveLevel}\n
-    // Classes: ${classes}\n
-    // Stats: ${stats}\n
-    // Race: ${bio}\n
-    // Templates: ${templates} with a LA mod of ${levelAdjust}\n
-    // Personality: ${personality}\n
-    // Culture: ${culture}\n
-    // `);
-    //output to stat area
-    // document.getElementById("con").innerText = `Con: ${stats.con} + ${statBonuses.con} = ${stats.con + statBonuses.con}`;
-    // document.getElementById("str").innerText = `Str: ${stats.str} + ${statBonuses.str} = ${stats.str + statBonuses.str}`;
-    // document.getElementById("dex").innerText = `Dex: ${stats.dex} + ${statBonuses.dex} = ${stats.dex + statBonuses.dex}`;
-    // document.getElementById("wis").innerText = `Wis: ${stats.wis} + ${statBonuses.wis} = ${stats.wis + statBonuses.wis}`;
-    // document.getElementById("int").innerText = `Int: ${stats.int} + ${statBonuses.int} = ${stats.int + statBonuses.int}`;
-    // document.getElementById("cha").innerText = `Cha: ${stats.cha} + ${statBonuses.cha} = ${stats.cha + statBonuses.cha}`;
-    // document.getElementById("level").innerText = `Lvl: ${baseLevel} + LA: ${levelAdjust} = Final Lvl: ${effectiveLevel}`;
-    // document.getElementById("biology").innerText = `Biology: ${bio}`;
-    // document.getElementById("background").innerText = `Background: ${background}`;
-    // document.getElementById("personality").innerText = `Personality: ${[personality]}`;
-    // document.getElementById("culture").innerText = `Culture: ${culture}`;
-
-    const statMenus = document.querySelectorAll(".stat-select");  
+function cullOptions(){
+    let chosenOption = event.target.value;
+    let index = statArray.findIndex(function(item, index) { f = index; return item == chosenOption; });
+    takenChoices.push(statArray.splice(index, 1));
+    const statMenus = document.querySelectorAll(".stat-select");
     statMenus.forEach((element) => {
-        //clears menus
-        while (element.length > 0){
-            element.removeChild(element.children[0]);
-        }
-        const choicesArr = [...statArray];
-        while (choicesArr.length > 0){
-            let option = document.createElement("option");
-            let stat = choicesArr.sort((a, b) => a - b).reverse().splice(0, 1);
-            option.value = stat;
-            option.innerHTML = stat;
-            element.appendChild(option);
-        }
+        element.removeChild(element.children[index + 1])
     })
+}
+function output(){
+    document.getElementById("export").innerHTML = `
+    <br>${charName}
+    <br>
+    <br>Level ${effectiveLevel} ${classes[0].name}
+    <br>
+    <br><b>Str:</b> ${document.getElementById("final-str").innerHTML} || 
+    <b>Dex:</b> ${document.getElementById("final-dex").innerHTML} || 
+    <b>Con:</b> ${document.getElementById("final-con").innerHTML} || 
+    <b>Int:</b> ${document.getElementById("final-int").innerHTML} || 
+    <b>Wis:</b> ${document.getElementById("final-wis").innerHTML} || 
+    <b>Cha:</b> ${document.getElementById("final-cha").innerHTML}
+    <br>
+    <br><b>${bio[0].name}</b>: ${bio[0].helpText}
+    <br>
+    <br><b>${templates[0].name}</b>: ${templates[0].helpText}
+    <br>
+    <br><b>${culture[0].name}</b>: ${culture[0].helpText}
+    <br>
+    <br><b>${background[0].name}</b>: ${background[0].helpText}
+    <br>
+    <br><b>${personalityArchetype[0].name}</b>: ${personalityArchetype[0].helpText}
+    `
+
 }
 function update(){
     charName = document.getElementById("charName").value;
-    bio = document.getElementById("biology-menu").value;
-    // classes.push(document.getElementById("class-menu").value);
-    // templates.push(document.getElementById("template-menu").value);
-    classes = document.getElementById("class-menu").value;
-    background = document.getElementById("background-menu").value;
-    templates = document.getElementById("template-menu").value;
-    personality = document.getElementById("personality-menu").value;
-    culture = document.getElementById("culture-menu").value;
+    let bioName = document.getElementById("biology-menu").value;
+    let className = document.getElementById("class-menu").value;
+    let backgroundName = document.getElementById("background-menu").value;
+    let templateName = document.getElementById("template-menu").value;
+    let personalityArchetypeName = document.getElementById("personality-archetype-menu").value;
+    let cultureName = document.getElementById("culture-menu").value;
     bioList.forEach((element) => {
-        if (element.name == bio){
+        if (element.name == bioName){
+            bio.pop();
+            bio.push(element);
             baseLevel = element.levelMod;
             statBonuses.con = 0;
             statBonuses.str = 0;
@@ -207,10 +226,37 @@ function update(){
             statBonuses.cha += element.cha;
         }
     });
+    levelAdjust = 0;
     templateList.forEach((element) => {
-        if (element.name == templates){
-            // console.log(`Template: ${element.name} -> ${element.levelMod}`);
-            levelAdjust = element.levelMod;
+        if (element.name == templateName){
+            templates.pop();
+            templates.push(element);
+            levelAdjust += element.levelMod;
+        }
+    });
+    classList.forEach((element) => {
+        if (element.name == className){
+            classes.pop();
+            classes.push(element);
+            levelAdjust += element.levelMod;
+        }
+    });
+    personalityArchetypeList.forEach((element) => {
+        if (element.name == personalityArchetypeName){
+            personalityArchetype.pop();
+            personalityArchetype.push(element);
+        }
+    });
+    cultureList.forEach((element) => {
+        if (element.name == cultureName){
+            culture.pop();
+            culture.push(element);
+        }
+    });
+    backgroundList.forEach((element) => {
+        if (element.name == backgroundName){
+            background.pop();
+            background.push(element);
         }
     });
     //update stat bonuses
@@ -261,13 +307,15 @@ menus.forEach((element) => element.addEventListener("change", update));
 //update char when button is clicked
 const buttons = document.querySelectorAll("button");
 buttons.forEach((element) => element.addEventListener("click", update));
-
+//cull available options when array value is chosen
+// const statMenus1 = document.querySelectorAll(".stat-select"); 
+// statMenus1.forEach((element) => element.addEventListener("change", cullOptions));
+//monitor incrementers/decrementers for point buy
 const incrementers = document.querySelectorAll(".incrementer");
 const decrementers = document.querySelectorAll(".decrementer");
 incrementers.forEach((element) => element.addEventListener("click", function(){modifyStat("increment")}));
 decrementers.forEach((element) => element.addEventListener("click", function(){modifyStat("decrement")}));
-
-
+//monitor randomize buttons with event listeners
 const randomizers = document.querySelectorAll(".randomizer");
 randomizers.forEach(btn => {btn.addEventListener("click", randomize)});
 document.getElementById("random-all").addEventListener("click", randomizeAll);
