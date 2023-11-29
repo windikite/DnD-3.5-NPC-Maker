@@ -300,7 +300,7 @@ function randomizeAll(){
 }
 //button even listeners
 document.getElementById("get-stats").addEventListener("click", getStats);
-document.getElementById("save-char").addEventListener("click", update);
+// document.getElementById("save-char").addEventListener("click", update);
 //update char when menu changes
 const menus = document.querySelectorAll("select");
 menus.forEach((element) => element.addEventListener("change", update));

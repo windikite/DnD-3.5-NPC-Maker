@@ -37,7 +37,7 @@
                         <optgroup label="Official" id="Bi-O" class="official"></optgroup>
                         <optgroup label="Unofficial" id="Bi-U" class="unofficial"></optgroup>
                     </select>
-                    <button class="randomizer">Randomize</button>
+                    <button class="randomizer"></button>
                 </div>
                 <!-- template select -->
                 <div>
@@ -46,7 +46,7 @@
                         <optgroup label="Official" id="Te-O" class="official"></optgroup>
                         <optgroup label="Unofficial" id="Te-U" class="unofficial"></optgroup>
                     </select>   
-                    <button class="randomizer">Randomize</button>
+                    <button class="randomizer"></button>
                 </div>
                 <!-- backgrounds select -->
                 <div>
@@ -55,7 +55,7 @@
                         <optgroup label="Official" id="Ba-O" class="official"></optgroup>
                         <optgroup label="Unofficial" id="Ba-U" class="unofficial"></optgroup>
                     </select> 
-                    <button class="randomizer">Randomize</button>
+                    <button class="randomizer"></button>
                 </div>
                 <!-- Personality Archetypes -->
                 <div>
@@ -64,7 +64,7 @@
                         <optgroup label="Official" id="Pe-O" class="official"></optgroup>
                         <optgroup label="Unofficial" id="Pe-U" class="unofficial"></optgroup>
                     </select> 
-                    <button class="randomizer">Randomize</button>
+                    <button class="randomizer"></button>
                 </div>
                 <!-- cultural heritage select -->
                 <div>
@@ -73,7 +73,7 @@
                         <optgroup label="Official" id="Cu-O" class="official"></optgroup>
                         <optgroup label="Unofficial" id="Cu-U" class="unofficial"></optgroup>
                     </select> 
-                    <button class="randomizer">Randomize</button>
+                    <button class="randomizer"></button>
                 </div>
                 <!-- class select -->
                 <div>
@@ -82,13 +82,15 @@
                         <optgroup label="Official" id="Cl-O" class="official"></optgroup>
                         <optgroup label="Unofficial" id="Cl-U" class="unofficial"></optgroup>
                     </select> 
-                    <button class="randomizer">Randomize</button>
+                    <button class="randomizer"></button>
                 </div>
                 <div>
-                    <button class="add-skills">Choose Skills</button>
+                    <!-- <button class="add-skills">Choose Skills</button>
                     <button class="roll-loot">Roll Loot</button>
-                    <button class="level-up">Level Up</button>
+                    <button class="level-up">Level Up</button> -->
+                    <button id="random-all">Randomize ALL Character Options</button>
                 </div>
+                <br>
                 <div id="stat-selection">
                     <div>
                         <select name="" id="stat-style-select">
@@ -243,8 +245,8 @@
                 <!-- <p>feats and skill point distribution</p>   -->
             </div>
             
-            <br><button id="save-char">Update character</button>
-            <button id="random-all">Randomize character</button>
+            <!-- <br><button id="save-char">Update character</button> -->
+            
 
         </main>
     </div>
@@ -279,7 +281,7 @@
             let option = document.createElement("option");
             option.value     = element.name;
             if (element.levelMod > 0 || element.levelMod < 0 ){
-                option.innerHTML = `${element.name} | +${element.levelMod} Level Adjust`;
+                option.innerHTML = `${element.name} | Level + ${element.levelMod}`;
             }else{
                 option.innerHTML = `${element.name}`;
             }

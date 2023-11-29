@@ -20,6 +20,12 @@ body{
     max-width: 1000px;
     margin:auto;
 }
+div{
+    /* justify-content: center; */
+    /* text-align: center; */
+    /* align-items: center; */
+    /* padding:0; */
+}
 .container{
     background-color: var(--sub-color);
     /* width:950px; */
@@ -72,7 +78,7 @@ footer{
     margin:2px;
 }
 .menu{
-    min-width: 210px;
+    min-width: 260px;
     height:30px;
 }
 #charName{
@@ -195,5 +201,14 @@ footer{
     background-color: var(--accent-color);
     width: 95%;
     height: 95%;
+    margin:auto;
+}
+.randomizer{
+    height:30px;
+    width:30px;
+    background-image: url('/img/dice.png');
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    border-radius: 3px;
     margin:auto;
 }
