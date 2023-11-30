@@ -70,5 +70,5 @@ const bioList = [
         wis: -2,
         int: 0,
         cha: -2,
-      },
+      }, 
 ]

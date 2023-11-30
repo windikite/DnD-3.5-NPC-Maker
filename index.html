@@ -98,7 +98,8 @@
                             <optgroup>
                                 <option value="random">4d6 Drop Lowest</option>
                                 <option value="buy">Point Buy</option>
-                                <option value="non-elite">Non-elite monster</option>
+                                <option value="standard-monster">Standard Monster</option>
+                                <option value="non-elite">Non-elite Monster</option>
                                 <option value="elite">Elite Monster</option>
                                 <option value="random-bad">4d6 Drop HIGHEST</option>
                             </optgroup>
@@ -106,14 +107,14 @@
                         </select>
                         <button id="get-stats">Get Stats</button>
                     </div>
+                    <div>
+                        <p id="points">0</p>
+                    </div>
                     <div id="stat-area">
-                        <div>
-                            <p id="points">0</p>
-                        </div>
                         <div class="stat-row">
                             <div class="stat-selector">
                                 <p id="str-label">Str</p>
-                                <select name="" class="stat-select"></select>
+                                <select name="str-select" class="stat-select"></select>
                             </div>
                             <div class="point-buy">
                                 <button class="incrementer">+</button>
@@ -131,7 +132,7 @@
                         <div class="stat-row">
                             <div class="stat-selector">
                                 <p id="dex-label">Dex</p>
-                                <select name="" class="stat-select"></select>
+                                <select name="dex-select" class="stat-select"></select>
                             </div>
                             <div class="point-buy">
                                 <button class="incrementer">+</button>
@@ -149,7 +150,7 @@
                         <div class="stat-row ">
                             <div class="stat-selector">
                                 <p id="con-label" class="">Con</p>
-                                <select name="" class="stat-select"></select>
+                                <select name="con-select" class="stat-select"></select>
                             </div>
                             <div class="point-buy">
                                 <button class="incrementer">+</button>
@@ -167,7 +168,7 @@
                         <div class="stat-row">
                             <div class="stat-selector">
                                 <p id="int-label">Int</p>
-                                <select name="" class="stat-select"></select>
+                                <select name="int-select" class="stat-select"></select>
                             </div>
                             <div class="point-buy">
                                 <button class="incrementer">+</button>
@@ -185,7 +186,7 @@
                         <div class="stat-row">
                             <div class="stat-selector">
                                 <p id="wis-label">Wis</p>
-                                <select name="" class="stat-select"></select>
+                                <select name="wis-select" class="stat-select"></select>
                             </div>
                             <div class="point-buy">
                                 <button class="incrementer">+</button>
@@ -204,7 +205,7 @@
                         <div class="stat-row">
                             <div class="stat-selector">
                                 <p id="cha-label">Cha</p>
-                                <select name="" class="stat-select"></select>
+                                <select name="cha-select" class="stat-select"></select>
                             </div>
                             <div class="point-buy">
                                 <button class="incrementer">+</button>

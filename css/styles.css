@@ -19,6 +19,7 @@ body{
     margin: 10px;
     max-width: 1000px;
     margin:auto;
+    font-size: 20px;
 }
 div{
     /* justify-content: center; */
@@ -52,6 +53,7 @@ footer{
     padding:10px;
     margin:10px;
     height:auto;
+    border-radius: 5px;
 }
 .flex-container{
     display: flex;
@@ -90,8 +92,10 @@ footer{
     display: flex;
     flex-direction: column;
     background-color: var(--accent-color);
+    max-width: 330px;
 }
 #stat-area{
+    display: flex;
     flex-direction: column;
     background-color: var(--main-color);
     margin:2px;
@@ -202,6 +206,8 @@ footer{
     width: 95%;
     height: 95%;
     margin:auto;
+    padding:20px;
+    border-radius: 5px;
 }
 .randomizer{
     height:30px;
@@ -212,3 +218,7 @@ footer{
     border-radius: 3px;
     margin:auto;
 }
+.stat-row > div{
+    margin:5px;
+}
+

@@ -3,7 +3,7 @@ personalityArchetypeList = [
       name: "Agent",
         levelMod: 0,
         official: true,
-        helpText: `An agent adventures not for themself but for an organization or society, whether a thieves guild sends them to gather information, she explores new territory for an emperor, or they carry the name of their deity into new lands. An agent might be loyal to their organization, or they might resent their role and look for a way to escape. An agent can create interesting dynamics in an adventuring party, especially when they must choose between their party and organization.`,
+        helpText: `An agent adventures not for themself but for an organization or society, whether a thieves guild sends them to gather information, they explores new territory for an emperor, or they carry the name of their deity into new lands. An agent might be loyal to their organization, or they might resent their role and look for a way to escape. An agent can create interesting dynamics in an adventuring party, especially when they must choose between their party and organization.`,
       },
       {
         name: "Challenger",
